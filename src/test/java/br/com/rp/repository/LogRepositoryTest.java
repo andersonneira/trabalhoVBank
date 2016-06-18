@@ -1,4 +1,4 @@
-package br.com.rp.domain;
+package br.com.rp.repository;
 
 import java.util.Calendar;
 import java.util.List;
@@ -12,7 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.rp.AbstractTest;
-import br.com.rp.repository.LogRepository;
+import br.com.rp.domain.Log;
+import br.com.rp.domain.TipoOperacao;
 
 public class LogRepositoryTest extends AbstractTest {
 

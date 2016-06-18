@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 import br.com.rp.domain.Log;
-import br.com.rp.domain.LogRepositoryTest;
+import br.com.rp.repository.LogRepositoryTest;
 import br.com.rp.repository.Repository;
 import br.com.rp.repository.impl.AbstractRepositoryImpl;
 import br.com.rp.rest.LogRestTest;
