@@ -1,0 +1,4 @@
+<dataset>
+	<solicitacao_proposta id="1" nome="anderson" email="andersonneira@gmail.com" motivo_rejeicao=" " cep="87000-000" />
+	<solicitacao_proposta id="2" nome="teste"    email="testeteste@gmail.com"    motivo_rejeicao=" " cep="88000-000" />
+</dataset>
