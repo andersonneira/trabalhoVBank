@@ -5,6 +5,7 @@ import java.util.List;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 
 import br.com.rp.domain.BaseEntity;
 import br.com.rp.repository.Repository;
@@ -38,7 +39,7 @@ public abstract class AbstractRepositoryImpl<T extends BaseEntity> implements Re
 	}
 
 	@Override
-	public T save(T object) {
+	public T save(@Valid T object) {
 		if (object instanceof BaseEntity) {
 			BaseEntity entity = (BaseEntity) object;
 			if (entity.getId() != null) {

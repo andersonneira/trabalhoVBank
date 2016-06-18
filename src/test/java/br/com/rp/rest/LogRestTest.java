@@ -17,7 +17,7 @@ import br.com.rp.domain.Log;
 
 public class LogRestTest extends AbstractRestTest {
 
-	private static final String URL = "http://localhost:8080/vbank/api/log";
+    private static final String URL = "http://localhost:8080/vbank/api/log";
 
 	@Test
 	@UsingDataSet("db/log.xml")

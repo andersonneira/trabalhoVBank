@@ -10,7 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="Configuracao")
+@Table(name="configuracao")
 public class Configuracao extends BaseEntity {
 	
 	@Temporal(TemporalType.TIME)

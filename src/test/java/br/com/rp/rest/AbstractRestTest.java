@@ -1,7 +1,6 @@
 package br.com.rp.rest;
 
 import java.io.File;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,10 +16,9 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 import br.com.rp.domain.Log;
-import br.com.rp.domain.LogRepositoryTest;
+import br.com.rp.repository.LogRepositoryTest;
 import br.com.rp.repository.Repository;
 import br.com.rp.repository.impl.AbstractRepositoryImpl;
-import br.com.rp.rest.LogRestTest;
 
 @RunWith(Arquillian.class)
 public abstract class AbstractRestTest {

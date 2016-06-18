@@ -1,7 +1,6 @@
 package br.com.rp;
 
 import java.io.File;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,16 +15,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
+import br.com.rp.anotations.Cep;
+import br.com.rp.anotations.validators.CepValidator;
 import br.com.rp.domain.Log;
-import br.com.rp.domain.LogRepositoryTest;
-import br.com.rp.domain.SolicitacaoProposta;
-import br.com.rp.domain.SolicitacaoPropostaTest;
+import br.com.rp.repository.LogRepositoryTest;
 import br.com.rp.repository.Repository;
-import br.com.rp.repository.SolicitacaoPropostaRepository;
 import br.com.rp.repository.impl.AbstractRepositoryImpl;
-import br.com.rp.repository.impl.SolicitacaoPropostaRepositoryImpl;
 import br.com.rp.service.LogServiceTest;
-import br.com.rp.rest.LogRestTest;
 import br.com.rp.services.LogService;
 
 @RunWith(Arquillian.class)
@@ -53,6 +49,8 @@ public abstract class AbstractTest {
 				.addPackages(false, Repository.class.getPackage())
 				.addPackages(false, AbstractRepositoryImpl.class.getPackage())
 				.addPackages(false, AbstractTest.class.getPackage())
+				.addPackages(false, Cep.class.getPackage())
+				.addPackages(false, CepValidator.class.getPackage())
 
                                 .addPackage(LogRepositoryTest.class.getPackage())
 				.addPackage(LogService.class.getPackage())

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.rp.domain;
+package br.com.rp.repository;
 
 import br.com.rp.AbstractTest;
-import br.com.rp.repository.SolicitacaoPropostaRepository;
+import br.com.rp.domain.SolicitacaoProposta;
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 import org.junit.Assert;
@@ -16,7 +16,7 @@ import org.junit.Test;
  *
  * @author anderson
  */
-public class SolicitacaoPropostaTest extends AbstractTest {
+public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
     
     @EJB
     private SolicitacaoPropostaRepository repository;

@@ -7,7 +7,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
-@Path("/solicitacaoProposta")
+@Path("/requestproposal")
 public class SolicitacaoPropostaRest {
 
     @EJB
