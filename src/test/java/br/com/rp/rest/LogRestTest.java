@@ -18,15 +18,14 @@ public class LogRestTest extends AbstractTest {
 
     private static final String URL = "http://localhost:8080/vbank/api/log";
 
-    @Test
-    @UsingDataSet("db/log.xml")
-    public void deveRetornar2LogsPeloRest() {
-        
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(URL);
-        Response response = target.request().get();
-        List<Log> logs = (List<Log>) response.readEntity(List.class);
-        Assert.assertEquals(2, logs.size());
-    }
+	@Test
+	@UsingDataSet("db/log.xml")
+	public void deveRetornar2LogsPeloRest() {
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(URL);
+		Response response = target.request().get();
+		List<Log> logs = response.readEntity(List.class);
+		Assert.assertEquals(2, logs.size());
+	}
 
 }

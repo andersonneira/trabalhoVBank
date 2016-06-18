@@ -27,6 +27,7 @@ public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
         sp.setNome("1");
         sp.setEmail("andersonneira@gmail.com");
         sp.setCep("87040-000");
+        sp.setDocumento("889.999.888-07");
         repository.save(sp);
         
     }
@@ -37,15 +38,71 @@ public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
         sp.setNome("Anderson B");
         sp.setEmail("an");
         sp.setCep("87040-000");
+        sp.setDocumento("889.999.888-08");
         repository.save(sp);
     }
     
+    @Test
     public void deveInserirUmaSolicitacao() {
         SolicitacaoProposta sp = new SolicitacaoProposta();
         sp.setNome("Anderson B");
-        sp.setEmail("an");
+        sp.setEmail("teste@gmail.com");
+        sp.setCep("87040-000");
+        sp.setDocumento("889.999.888-09");
+        sp = repository.save(sp);
+        Assert.assertNotNull(sp.getId());
+    }
+    
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorFormatoCepInvalido() {
+    	SolicitacaoProposta sp = new SolicitacaoProposta();
+    	sp.setNome("Anderson B");
+    	sp.setEmail("teste@gmail.com");
+    	sp.setCep("87.04.00.00");
+    	sp.setDocumento("889.999.888-10");
+    	sp = repository.save(sp);
+    	Assert.assertNotNull(sp.getId());
+    }
+    
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorFaltaDeDocumento() {
+        SolicitacaoProposta sp = new SolicitacaoProposta();
+        sp.setNome("Anderson B");
+        sp.setEmail("teste@gmail.com");
         sp.setCep("87040-000");
         sp = repository.save(sp);
         Assert.assertNotNull(sp.getId());
+    }
+    
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorFormatoDocumentoInvalido() {
+    	SolicitacaoProposta sp = new SolicitacaoProposta();
+    	sp.setNome("Anderson B");
+    	sp.setEmail("teste@gmail.com");
+    	sp.setCep("87040-000");
+    	sp.setDocumento("88.9999.88.8-12");
+    	sp = repository.save(sp);
+    	Assert.assertNotNull(sp.getId());
+    }
+    
+
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorDocumentoDuplicado() {
+    	SolicitacaoProposta sp = new SolicitacaoProposta();
+    	sp.setNome("Anderson B");
+    	sp.setEmail("teste@gmail.com");
+    	sp.setCep("87040-000");
+    	sp.setDocumento("88.9999.88.8-15");
+    	sp = repository.save(sp);
+    	
+    	SolicitacaoProposta sp1 = new SolicitacaoProposta();
+    	sp1.setNome("Anderson B");
+    	sp1.setEmail("teste@gmail.com");
+    	sp1.setCep("87040-000");
+    	sp1.setDocumento("88.9999.88.8-15");
+    	sp1 = repository.save(sp1);
+    	
+    	
+    	Assert.assertNotNull(sp.getId());
     }
 }

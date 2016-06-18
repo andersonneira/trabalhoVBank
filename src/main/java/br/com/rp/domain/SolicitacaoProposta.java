@@ -7,11 +7,16 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+import br.com.rp.anotations.Cep;
+import br.com.rp.anotations.Documento;
+
 @Entity
 @Table(name = "solicitacao_proposta")
 public class SolicitacaoProposta extends BaseEntity {
 
-    @Column(name = "nome", length = 100, nullable = false)
+	private static final long serialVersionUID = 1L;
+	
+	@Column(name = "nome", length = 100, nullable = false)
     @Size(min = 3, max = 100)
     private String nome;
     @Column(name = "email", nullable = false)
@@ -20,8 +25,12 @@ public class SolicitacaoProposta extends BaseEntity {
     
     @Column(name = "motivo_rejeicao")
     private String motivoRejeicao;
-    //@cep
+    @Cep
     private String cep;
+    
+    @Column(name = "documento", nullable=false, unique=true)
+    @Documento
+    private String documento;
 
     public SolicitacaoProposta() {
     }
@@ -64,4 +73,11 @@ public class SolicitacaoProposta extends BaseEntity {
         this.cep = cep;
     }
 
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
 }

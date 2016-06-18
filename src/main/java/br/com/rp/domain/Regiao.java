@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import br.com.rp.anotations.Cep;
+
 /**
  *
  * @author anderson
@@ -18,12 +20,16 @@ import javax.validation.constraints.Size;
 @Table(name = "regiao")
 public class Regiao extends BaseEntity {
 
-    @Column(name = "nome", length = 100, nullable = false)
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "nome", length = 100, nullable = false)
     @Size(min = 3, max = 100)
     private String nome;
-    //@Cep
+    @Cep
+    @Column(name = "cepInicial", nullable = false)
     private String cepInicial;
-    //@Cep
+    @Cep
+    @Column(name = "cepFinal", nullable = false)
     private String cepFinal;
 
     public String getNome() {
