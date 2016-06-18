@@ -1,6 +1,6 @@
 package br.com.rp.rest;
 
-import java.net.URL;
+import br.com.rp.AbstractTest;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
@@ -9,13 +9,12 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
 import org.jboss.arquillian.persistence.UsingDataSet;
-import org.jboss.arquillian.test.api.ArquillianResource;
 import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.rp.domain.Log;
 
-public class LogRestTest extends AbstractRestTest {
+public class LogRestTest extends AbstractTest {
 
     private static final String URL = "http://localhost:8080/vbank/api/log";
 

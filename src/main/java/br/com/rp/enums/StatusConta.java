@@ -9,6 +9,9 @@ package br.com.rp.enums;
  *
  * @author anderson
  */
-public class StatusConta {
+public enum StatusConta {
+    
+    APROVADA,
+    ANALISE;
     
 }

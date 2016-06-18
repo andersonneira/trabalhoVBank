@@ -1,5 +1,6 @@
 package br.com.rp.rest;
 
+import br.com.rp.AbstractTest;
 import java.net.URL;
 
 import javax.ws.rs.client.Client;
@@ -11,7 +12,7 @@ import org.jboss.arquillian.test.api.ArquillianResource;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SolicitacaoPropostaRestTest extends AbstractRestTest {
+public class SolicitacaoPropostaRestTest extends AbstractTest {
 
     private static final String URL = "http://localhost:8080/vbank/api/requestproposal";
 

@@ -6,8 +6,10 @@ import br.com.rp.repository.SolicitacaoPropostaRepository;
 import javax.ejb.EJB;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 @Path("/requestproposal")
+@Produces("application/json")
 public class SolicitacaoPropostaRest {
 
     @EJB

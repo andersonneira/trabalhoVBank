@@ -8,8 +8,10 @@ import javax.ws.rs.Path;
 
 import br.com.rp.domain.Log;
 import br.com.rp.repository.LogRepository;
+import javax.ws.rs.Produces;
 
 @Path("/log")
+@Produces("application/json")
 public class LogRest {
 
 	@EJB

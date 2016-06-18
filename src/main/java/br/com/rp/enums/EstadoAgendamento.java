@@ -9,6 +9,6 @@ package br.com.rp.enums;
  *
  * @author anderson
  */
-public class EstadoAgendamento {
+public enum EstadoAgendamento {
     
 }

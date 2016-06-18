@@ -18,9 +18,12 @@ import org.junit.runner.RunWith;
 import br.com.rp.anotations.Cep;
 import br.com.rp.anotations.validators.CepValidator;
 import br.com.rp.domain.Log;
+import br.com.rp.enums.StatusConta;
 import br.com.rp.repository.LogRepositoryTest;
 import br.com.rp.repository.Repository;
 import br.com.rp.repository.impl.AbstractRepositoryImpl;
+import br.com.rp.rest.LogRest;
+import br.com.rp.rest.LogRestTest;
 import br.com.rp.service.LogServiceTest;
 import br.com.rp.services.LogService;
 
@@ -33,7 +36,7 @@ public abstract class AbstractTest {
 	@Before
 	public void setup() {
 
-	}
+	}   
 
 	@After
 	public void tearDown() {
@@ -52,12 +55,13 @@ public abstract class AbstractTest {
 				.addPackages(false, Cep.class.getPackage())
 				.addPackages(false, CepValidator.class.getPackage())
 
+                                .addPackage(LogRest.class.getPackage())
+                                .addPackage(LogRestTest.class.getPackage())
+                        
                                 .addPackage(LogRepositoryTest.class.getPackage())
 				.addPackage(LogService.class.getPackage())
 				.addPackage(LogServiceTest.class.getPackage())
-                                
-                                
-				
+				.addPackage(StatusConta.class.getPackage())
                                 
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml").addAsWebInfResource("cesumar-ds.xml")
