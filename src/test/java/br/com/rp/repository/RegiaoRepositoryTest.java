@@ -25,6 +25,8 @@ public class RegiaoRepositoryTest extends AbstractTest {
     public void deveNaoInserirPorFaltaDeCaracteresDoNome() {
         Regiao sp = new Regiao();
         sp.setNome("1");
+        sp.setCepFinal("86800-005");
+        sp.setCepFinal("86800-006");
         repository.save(sp);
     }
 
@@ -32,6 +34,46 @@ public class RegiaoRepositoryTest extends AbstractTest {
     public void deveInserir() {
         Regiao sp = new Regiao();
         sp.setNome("Norte");
+        sp.setCepFinal("86800-005");
+        sp.setCepInicial("86800-006");
+        sp = repository.save(sp);
+        Assert.assertNotNull(sp.getId());
+    }
+    
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorFormatoCepIncialInvalido() {
+        Regiao sp = new Regiao();
+        sp.setNome("Norte");
+        sp.setCepInicial("868.0.0005");
+        sp.setCepFinal("86800-005");
+        sp = repository.save(sp);
+        Assert.assertNotNull(sp.getId());
+    }
+    
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorFormatoCepFinalInvalido() {
+        Regiao sp = new Regiao();
+        sp.setNome("Norte");
+        sp.setCepInicial("86800-005");
+        sp.setCepFinal("868.0.0005");
+        sp = repository.save(sp);
+        Assert.assertNotNull(sp.getId());
+    }
+    
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorFaltaDeCepInicial() {
+        Regiao sp = new Regiao();
+        sp.setNome("Norte");
+        sp.setCepFinal("86800-005");
+        sp = repository.save(sp);
+        Assert.assertNotNull(sp.getId());
+    }
+    
+    @Test(expected = EJBTransactionRolledbackException.class)
+    public void naoDeveInserirPorFaltaDeCepFinal() {
+        Regiao sp = new Regiao();
+        sp.setNome("Norte");
+        sp.setCepInicial("86800-005");
         sp = repository.save(sp);
         Assert.assertNotNull(sp.getId());
     }
