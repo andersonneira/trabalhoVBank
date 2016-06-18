@@ -31,7 +31,7 @@ public class Regiao extends BaseEntity {
     @Cep
     @Column(name = "cepFinal", nullable = false)
     private String cepFinal;
-
+    
     public String getNome() {
         return nome;
     }

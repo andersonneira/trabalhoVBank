@@ -2,6 +2,8 @@ package br.com.rp.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -30,6 +32,10 @@ public class Cliente extends BaseEntity {
 	@Column(name="documento", nullable=false, unique=true)
 	@Documento
 	private String documento;
+	
+	@ManyToOne//(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "regiao", nullable=false)
+	private Regiao regiao;
 
 	public Cliente() {
 		super();
@@ -67,10 +73,16 @@ public class Cliente extends BaseEntity {
 		this.documento = documento;
 	}
 
+	public Regiao getRegiao() {
+		return regiao;
+	}
+
+	public void setRegiao(Regiao regiao) {
+		this.regiao = regiao;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [email=" + email + ", nome=" + nome + ", cep=" + cep + "]";
 	}
-
-	
 }
