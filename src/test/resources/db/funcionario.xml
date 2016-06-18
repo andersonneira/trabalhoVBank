@@ -1,0 +1,4 @@
+<dataset>
+	<funcionario id="1" nome="marcos" senha="123marcos" />
+	<funcionario id="2" nome="welton" senha="123welton" />
+</dataset>
