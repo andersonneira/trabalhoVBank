@@ -15,6 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
+import br.com.rp.anotations.Cep;
+import br.com.rp.anotations.validators.CepValidator;
 import br.com.rp.domain.Log;
 import br.com.rp.repository.LogRepositoryTest;
 import br.com.rp.repository.Repository;
@@ -47,6 +49,8 @@ public abstract class AbstractTest {
 				.addPackages(false, Repository.class.getPackage())
 				.addPackages(false, AbstractRepositoryImpl.class.getPackage())
 				.addPackages(false, AbstractTest.class.getPackage())
+				.addPackages(false, Cep.class.getPackage())
+				.addPackages(false, CepValidator.class.getPackage())
 
                                 .addPackage(LogRepositoryTest.class.getPackage())
 				.addPackage(LogService.class.getPackage())
