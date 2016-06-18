@@ -7,7 +7,6 @@ package br.com.rp.repository;
 
 import br.com.rp.AbstractTest;
 import br.com.rp.domain.SolicitacaoProposta;
-import br.com.rp.repository.SolicitacaoPropostaRepository;
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 import org.junit.Assert;
