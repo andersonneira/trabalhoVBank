@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
-//xs dsfsdf
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
