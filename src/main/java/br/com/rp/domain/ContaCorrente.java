@@ -8,6 +8,7 @@ package br.com.rp.domain;
 import br.com.rp.enums.StatusConta;
 import br.com.rp.enums.TipoConta;
 import java.math.BigDecimal;
+import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -65,9 +66,11 @@ public class ContaCorrente extends BaseEntity {
      * Quando uma conta for iniciada esse metodo irá gerar o número e o digito
      * verificador da conta.
      */
-    private void gerarConta() {
-        Long time = System.currentTimeMillis();
-        this.digitoVerificador = "" + Math.log10(time);
+    private void gerarConta() { 
+        Random rnd = new Random();
+        String log = "" + Math.log10(1000000 + rnd.nextInt(9000000));
+        this.digitoVerificador = log.substring(log.length() -1);
+        this.numero = log.substring(3, 8);        
     }
 
     public String getNumero() {
