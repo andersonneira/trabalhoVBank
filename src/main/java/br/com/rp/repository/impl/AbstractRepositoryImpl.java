@@ -14,7 +14,7 @@ import br.com.rp.repository.Repository;
 public abstract class AbstractRepositoryImpl<T extends BaseEntity> implements Repository<T> {
 
 	@PersistenceContext(unitName = "vbankpu")
-	private EntityManager em;
+	protected EntityManager em;
 
 	private Class<T> clazz;
 
