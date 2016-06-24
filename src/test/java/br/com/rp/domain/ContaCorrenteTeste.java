@@ -9,11 +9,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.rp.AbstractTest;
+
 /**
  *
  * @author anderson
  */
-public class ContaCorrenteTeste {
+public class ContaCorrenteTeste  extends AbstractTest {
 
     private ContaCorrente contaCorrente;
 
