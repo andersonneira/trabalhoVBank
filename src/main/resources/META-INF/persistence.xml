@@ -4,7 +4,6 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:/sabium</jta-data-source>
     <class>br.com.rp.domain.Regiao</class>
-    <class>br.com.rp.domain.ContaCorrenteTeste</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
