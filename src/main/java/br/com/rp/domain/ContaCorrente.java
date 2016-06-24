@@ -26,7 +26,9 @@ import javax.validation.constraints.Size;
 @Table(name = "conta_corrente")
 public class ContaCorrente extends BaseEntity {
 
-    @Column(name = "numero", length = 10, nullable = false)
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "numero", length = 10, nullable = false)
     @Size(min = 3, max = 10)
     private String numero;
 
