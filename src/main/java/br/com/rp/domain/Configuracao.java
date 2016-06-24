@@ -14,14 +14,14 @@ import javax.persistence.TemporalType;
 public class Configuracao extends BaseEntity {
 	
 	@Temporal(TemporalType.TIME)
-	@Column(name = "hora_abertura_operacao")
+	@Column(name = "hora_abertura_operacao",nullable=false)
 	private Date horaAberturaOperacao;
 	
 	@Temporal(TemporalType.TIME)
-	@Column(name = "hora_fechamento_operacao")
+	@Column(name = "hora_fechamento_operacao",nullable=false)
 	private Date horaFechamentoOperacao;
 	
-	@Column(name = "limite_padrao")
+	@Column(name = "limite_padrao",nullable=false)
 	private BigDecimal limitePadrao;
 
 	public Date getHoraAberturaOperacao() {

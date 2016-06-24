@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import br.com.rp.anotations.Documento;
+
 @Entity
 @Table(name="funcionario")
 public class Funcionario extends BaseEntity{
@@ -17,11 +19,16 @@ public class Funcionario extends BaseEntity{
     @Size(min = 6, max = 10)
     private String senha;
 	
+	@Documento
+	private String documento;
+	//Construtor sem parametro
 	public Funcionario(){
 	}
-	public Funcionario(String nome, String senha){
+	//Construtor com parametro
+	public Funcionario(String nome, String senha, String documentoo){
 		this.nome=nome;
 		this.senha=senha;
+		this.documento=documentoo;
 	}
 
 	public String getNome() {
@@ -39,5 +46,12 @@ public class Funcionario extends BaseEntity{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public String getDocumento() {
+		return documento;
+	}
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+	
 	
 }

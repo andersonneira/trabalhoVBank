@@ -17,9 +17,18 @@ public class FuncionarioServiceTest extends AbstractTest {
 
 	@Test
 	@UsingDataSet("db/funcionario.xml")
-	public void deveRetornar2Logs() {
+	public void deveRetornar2Funcionarios() {
 		List<Funcionario> funcionarios = service.getAllFuncionarios();
 		Assert.assertEquals(2, funcionarios.size());
 	}
+	@Test
+	@UsingDataSet("db/funcionario.xml")
+	public void deveRetornarUmFuncionarioPeloId() {
+		Long id = new Long(1);
+		Funcionario funcionario = service.getFuncionarioById(id);
+		String marcos = new String("marcos");
+		Assert.assertEquals(marcos, funcionario.getNome());
+	}
+	
 	
 }

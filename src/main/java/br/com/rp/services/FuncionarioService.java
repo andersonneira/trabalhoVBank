@@ -17,4 +17,7 @@ public class FuncionarioService {
 	public List<Funcionario> getAllFuncionarios() {
 		return repository.getAll();
 	}
+	public Funcionario getFuncionarioById(Long id) {
+		return repository.findById(id);
+	}
 }
