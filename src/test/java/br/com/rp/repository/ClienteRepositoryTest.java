@@ -15,7 +15,7 @@ import br.com.rp.domain.Regiao;
 
 public class ClienteRepositoryTest extends AbstractTest {
 
-	private static final String _DOCUMENTO_VALIDO = "000.000.000-0";
+	private static final String _DOCUMENTO_VALIDO = "828.588.613-15";
 	private static final String _NOME_VALIDO = "Teste";
 	private static final String _EMAIL_VALIDO = "teste@gmail.com";
 	private static final String _CEP_VALIDO = "86800-005";
@@ -41,7 +41,7 @@ public class ClienteRepositoryTest extends AbstractTest {
 		cli.setCep(_CEP_VALIDO);
 		cli.setNome(_NOME_VALIDO);
 		cli.setDataCadastro(Calendar.getInstance().getTime());
-		cli.setDocumento(_DOCUMENTO_VALIDO+"0");
+		cli.setDocumento(_DOCUMENTO_VALIDO);
 		cli.setRegiao(regiaoRepository.findById(regiao.getId()));
 	}
 	

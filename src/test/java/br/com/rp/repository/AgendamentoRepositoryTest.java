@@ -3,11 +3,9 @@ package br.com.rp.repository;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 import javax.ejb.EJB;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,7 +26,6 @@ public class AgendamentoRepositoryTest extends AbstractTest {
 	private static final Date _DATA_INCLUSAO_VALIDA = Calendar.getInstance().getTime();
 	private static final Date _DATA_REALIZACAO_VALIDA = Calendar.getInstance().getTime();
 	
-	private static final String _DOCUMENTO_VALIDO = "000.000.000-";
 	private static final String _NOME_VALIDO = "Teste";
 	private static final String _EMAIL_VALIDO = "teste@gmail.com";
 	private static final String _CEP_VALIDO = "86800-005";
@@ -65,6 +62,18 @@ public class AgendamentoRepositoryTest extends AbstractTest {
 	
 	@Before
 	public void before() {
+		if (agendamento != null && agendamento.getId() != null) 
+			repository.remove(agendamento.getId());
+		
+		if (conta != null && conta.getId() != null) 
+		contaCorrenteRepository.remove(conta.getId());
+		
+		if (cliente != null && cliente.getId() != null) 
+		clienteRepository.remove(cliente.getId());
+		
+		if (regiao != null && regiao.getId() != null) 
+		regiaoRepository.remove(regiao.getId());
+		
 		Transacao transacao = new Transacao();
 		transacao.setAgenciaDestino(_AGENDCIA_DESTINO_VALIDA);
 		transacao.setAgenciaDestinoDigitoVerificador(_AGENCIA_DESTINO_DV_VALIDO);
@@ -84,7 +93,7 @@ public class AgendamentoRepositoryTest extends AbstractTest {
 		cliente.setCep(_CEP_VALIDO);
 		cliente.setNome(_NOME_VALIDO);
 		cliente.setDataCadastro(Calendar.getInstance().getTime());
-		cliente.setDocumento(_DOCUMENTO_VALIDO+new Random().nextInt(99));
+		cliente.setDocumento(new GerarCPF().geraCPF()); //+new Random().nextInt(99)
 		cliente.setRegiao(regiaoRepository.findById(regiao.getId()));
 		clienteRepository.save(cliente);
 		
@@ -103,15 +112,6 @@ public class AgendamentoRepositoryTest extends AbstractTest {
 		agendamento.setTransacao(transacao);
 	}
 	
-	@After
-	public void after() {
-		if (agendamento.getId() != null) 
-			repository.remove(agendamento.getId());
-		
-		contaCorrenteRepository.remove(conta.getId());
-		clienteRepository.remove(cliente.getId());
-		regiaoRepository.remove(regiao.getId());
-	}
 	
 	@Test
 	public void deveInserirComSucesso() {

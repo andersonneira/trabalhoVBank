@@ -17,7 +17,7 @@ import br.com.rp.anotations.validators.DocumentoValidator;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Documento {
 
-	String message() default "Cep inválido";
+	String message() default "Documento inválido";
 
 	Class<?>[] groups() default {};
 
