@@ -6,16 +6,26 @@ import org.junit.Test;
 import br.com.rp.AbstractTest;
 import br.com.rp.domain.Funcionario;
 
-public class FuncionarioRepositoryTest extends AbstractTest{
-	
+public class FuncionarioRepositoryTest extends AbstractTest {
+
 	@EJB
-    private FuncionarioRepository repository;
-	
+	private FuncionarioRepository repository;
+
 	@Test
-    public void deveInserirUmFuncionario() {
-//        Funcionario fo = new Funcionario("Marcos","marcos123","009.794.029-13");
-//        fo = repository.save(fo);
-//        Assert.assertNotNull(fo.getId());
-    }
+	public void deveInserirUmFuncionario() {
+		Funcionario fo = new Funcionario("Marcos", "marcos123",
+				"009.794.029-13");
+		fo = repository.save(fo);
+		Assert.assertNotNull(repository.getAll());
+	}
+
+	@Test
+	public void deveBuscarUmFuncionarioPeloId() {
+		Long id = new Long(1);
+		Funcionario fo = new Funcionario("Marcos", "marcos123",
+				"009.794.029-13");
+		fo = repository.save(fo);
+		Assert.assertNotNull(repository.findById(id));
+	}
 
 }

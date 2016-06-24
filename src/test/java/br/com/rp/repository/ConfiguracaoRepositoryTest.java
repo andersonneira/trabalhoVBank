@@ -21,6 +21,6 @@ public class ConfiguracaoRepositoryTest extends AbstractTest {
         cg.setHoraFechamentoOperacao(cl.getTime());
         cg.setLimitePadrao(bg);
         cg = repository.save(cg);
-        Assert.assertNotNull(cg.getId());
+        Assert.assertNotNull(repository.getAll());
     }
 }
