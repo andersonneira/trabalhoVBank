@@ -18,6 +18,7 @@ import br.com.rp.dto.ContaCorrenteMovimentacaoDTO;
 import br.com.rp.dto.ContaCorrenteResumoDTO;
 import br.com.rp.services.ContaCorrenteService;
 import br.com.rp.services.DepositoChequeService;
+import br.com.rp.services.PagamentoService;
 
 @Path("/manageaccount")
 @Produces("application/json")
@@ -28,6 +29,57 @@ public class ContaCorrenteRest {
 	
 	@EJB
 	private DepositoChequeService depositoChequeService;
+
+	@EJB
+	private PagamentoService pagamentoService;
+	
+	@POST
+	@Path("/taxbillpayment")
+	public String realizarPagamentoImposto(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido) {
+		try {
+			pagamentoService.realizarPagamentoImposto(contaId, linhaDigitavel, valor, favorecido);
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
+	@Path("/electricitybillpayment")
+	public String realizarPagamentoLuz(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido) {
+		try {
+			pagamentoService.realizarPagamentoLuz(contaId, linhaDigitavel, valor, favorecido);
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
+	@Path("/waterbillpayment")
+	public String realizarPagamentoAgua(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido) {
+		try {
+			pagamentoService.realizarPagamentoAgua(contaId, linhaDigitavel, valor, favorecido);
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
+	@Path("/billpayment")
+	public String realizarPagamentoTitulo(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido) {
+		try {
+			pagamentoService.realizarPagamentoTitulo(contaId, linhaDigitavel, valor, favorecido);
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
 	
 	@POST
 	@Path("/depositcheckinaccount")

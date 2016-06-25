@@ -107,6 +107,62 @@ public class ContaCorrenteRestTest extends AbstractTest {
         Assert.assertEquals("ok", response.readEntity(String.class));
     }
 	
+	@Test
+	@UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
+    public void realizarPagamentoImposto() {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(URL+"/taxbillpayment");
+        Form form = new Form();
+        form.param("contaId", "1000");
+        form.param("valor", "100");
+        form.param("linhaDigitavel", "0000.0.51980000");
+        form.param("favorecido", "Secretaria do Estado do Paraná");
+        Response response = target.request().post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED), Response.class);
+        Assert.assertEquals("ok", response.readEntity(String.class));
+    }
+	
+	@Test
+	@UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
+    public void realizarPagamentoLuz() {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(URL+"/electricitybillpayment");
+        Form form = new Form();
+        form.param("contaId", "1000");
+        form.param("valor", "100");
+        form.param("linhaDigitavel", "000000.88888888880.0.51980000000000");
+        form.param("favorecido", "Copel");
+        Response response = target.request().post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED), Response.class);
+        Assert.assertEquals("ok", response.readEntity(String.class));
+    }
+	
+	@Test
+	@UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
+    public void realizarPagamentoAgua() {
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(URL+"/waterbillpayment");
+        Form form = new Form();
+        form.param("contaId", "1000");
+        form.param("valor", "100");
+        form.param("linhaDigitavel", "0000000.0.51980000000000");
+        form.param("favorecido", "Sanepar");
+        Response response = target.request().post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED), Response.class);
+        Assert.assertEquals("ok", response.readEntity(String.class));
+    }
+	
+	@Test
+	@UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
+	public void realizarPagamentoTitulo() {
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(URL+"/billpayment");
+		Form form = new Form();
+		form.param("contaId", "1000");
+		form.param("valor", "100");
+		form.param("linhaDigitavel", "00000.00000.00000.000000.00000.000000.0.51980000000000");
+		form.param("favorecido", "Teste Corp.");
+		Response response = target.request().post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED), Response.class);
+		Assert.assertEquals("ok", response.readEntity(String.class));
+	}
+	
 	private Date getHoraInicial() {
 		Calendar calInicial = Calendar.getInstance();
 		calInicial.set(Calendar.DAY_OF_MONTH, 1);

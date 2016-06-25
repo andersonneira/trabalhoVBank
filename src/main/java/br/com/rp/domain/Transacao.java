@@ -44,6 +44,10 @@ public class Transacao extends BaseEntity {
 	@JoinColumn(name="deposito_cheque")
 	private DepositoCheque depositoCheque;
 
+	@OneToOne
+	@JoinColumn(name="pagamento")
+	private Pagamento pagamento;
+
 	public Transacao() {
 		super();
 	}
@@ -111,6 +115,14 @@ public class Transacao extends BaseEntity {
 	public void setDepositoCheque(DepositoCheque depositoCheque) {
 		this.depositoCheque = depositoCheque;
 	}
+	
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
 
 	@Override
 	public String toString() {
@@ -118,6 +130,6 @@ public class Transacao extends BaseEntity {
 				+ ", agenciaDestino=" + agenciaDestino + ", agenciaDestinoDigitoVerificador="
 				+ agenciaDestinoDigitoVerificador + ", numeroContaDestino=" + numeroContaDestino
 				+ ", numeroContaDestinoDigitoVerificador=" + numeroContaDestinoDigitoVerificador + ", depositoCheque="
-				+ depositoCheque + "]";
+				+ depositoCheque + ", pagamento=" + pagamento + "]";
 	}
 }

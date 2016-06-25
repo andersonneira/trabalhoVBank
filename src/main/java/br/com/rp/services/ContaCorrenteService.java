@@ -76,6 +76,21 @@ public class ContaCorrenteService {
 			return null;
 		}
 	}
+	
+	public void validaSaldoTransacao(Long contaId, BigDecimal valor) throws Exception {
+		ContaCorrente conta = repository.findById(contaId);
+		if (conta == null) {
+			throw new Exception("Conta Corrente não localizada");
+		}
+		ContaCorrenteResumoDTO ccResumo = getResumoConta(contaId);
+		if (ccResumo == null) {
+			throw new Exception("Operação indisponivél no momento, entre em contato com seu gerente...");
+		} 
+		
+		if (valor.compareTo(ccResumo.getSaldo()) > 0) {
+			throw new Exception("Saldo insuficiente, operação cancelada!");
+		}
+	}
 
 	public ContaCorrenteResumoDTO getResumoConta(Long id) {
 		try {
