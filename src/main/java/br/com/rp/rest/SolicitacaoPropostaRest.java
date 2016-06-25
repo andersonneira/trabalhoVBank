@@ -33,21 +33,4 @@ public class SolicitacaoPropostaRest {
     public SolicitacaoProposta consultaSolicitacaoPropostaPeloId(@PathParam("id")String id){
     	return repository.findById(Long.valueOf(id));
     }
-    @Path("/rejectProposal/{id}/{motivoRejeicao}")
-    @PUT
-    public String rejeitaeSolicitacaoProposta(@PathParam("motivoRejeicao")String motivoRejeicao,@PathParam("id")String id) {
-        try {
-        	SolicitacaoProposta sp = new SolicitacaoProposta();
-        	sp = repository.findById(Long.valueOf(id));
-        	sp.setMotivoRejeicao(motivoRejeicao);
-        	repository.save(sp);
-        	//enviar email com motivo da rejeição
-            return motivoRejeicao;
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-    }
-    
-    
-
-}
+ }
