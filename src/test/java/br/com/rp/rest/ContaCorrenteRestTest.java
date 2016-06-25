@@ -1,4 +1,4 @@
-package br.com.rp;
+package br.com.rp.rest;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,6 +18,8 @@ import org.jboss.arquillian.persistence.TestExecutionPhase;
 import org.jboss.arquillian.persistence.UsingDataSet;
 import org.junit.Assert;
 import org.junit.Test;
+
+import br.com.rp.AbstractTest;
 
 @CleanupUsingScript(value="db/cleanup.sql", phase=TestExecutionPhase.AFTER)
 public class ContaCorrenteRestTest extends AbstractTest {
