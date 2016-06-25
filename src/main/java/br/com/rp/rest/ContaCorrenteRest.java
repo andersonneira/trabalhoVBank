@@ -17,6 +17,7 @@ import br.com.rp.domain.ContaCorrente;
 import br.com.rp.dto.ContaCorrenteMovimentacaoDTO;
 import br.com.rp.dto.ContaCorrenteResumoDTO;
 import br.com.rp.services.ContaCorrenteService;
+import br.com.rp.services.DepositoChequeService;
 
 @Path("/manageaccount")
 @Produces("application/json")
@@ -24,6 +25,21 @@ public class ContaCorrenteRest {
 	
 	@EJB
 	private ContaCorrenteService service;
+	
+	@EJB
+	private DepositoChequeService depositoChequeService;
+	
+	@POST
+	@Path("/depositcheckinaccount")
+	public String realizarDepositoChequeEmConta(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("cmc7") String cmc7, @FormParam("imagem") String imagem) {
+		try {
+			depositoChequeService.realizarDepositoChequeEmConta(contaId, cmc7, imagem, valor);
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
 
 	@POST
 	@Path("/transferbetweenaccounts")
@@ -74,4 +90,6 @@ public class ContaCorrenteRest {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(contaCorrenteId, sdf.parse(dataInicial), sdf.parse(dataFinal));
 	}
+	
+	
 }

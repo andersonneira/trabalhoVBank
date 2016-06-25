@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,6 +39,10 @@ public class Transacao extends BaseEntity {
 	
 	@Column(name = "numeroContaDestinoDigitoVerificador", nullable=false)
 	private String numeroContaDestinoDigitoVerificador;
+	
+	@OneToOne
+	@JoinColumn(name="deposito_cheque")
+	private DepositoCheque depositoCheque;
 
 	public Transacao() {
 		super();
@@ -97,13 +103,21 @@ public class Transacao extends BaseEntity {
 	public void setNumeroContaDestinoDigitoVerificador(String numeroContaDestinoDigitoVerificador) {
 		this.numeroContaDestinoDigitoVerificador = numeroContaDestinoDigitoVerificador;
 	}
+	
+	public DepositoCheque getDepositoCheque() {
+		return depositoCheque;
+	}
+
+	public void setDepositoCheque(DepositoCheque depositoCheque) {
+		this.depositoCheque = depositoCheque;
+	}
 
 	@Override
 	public String toString() {
 		return "Transacao [valor=" + valor + ", envioBacen=" + envioBacen + ", envioMatriz=" + envioMatriz
 				+ ", agenciaDestino=" + agenciaDestino + ", agenciaDestinoDigitoVerificador="
 				+ agenciaDestinoDigitoVerificador + ", numeroContaDestino=" + numeroContaDestino
-				+ ", numeroContaDestinoDigitoVerificador=" + numeroContaDestinoDigitoVerificador + "]";
+				+ ", numeroContaDestinoDigitoVerificador=" + numeroContaDestinoDigitoVerificador + ", depositoCheque="
+				+ depositoCheque + "]";
 	}
-	
 }
