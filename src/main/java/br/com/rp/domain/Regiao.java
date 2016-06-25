@@ -20,9 +20,9 @@ import br.com.rp.anotations.Cep;
 @Table(name = "regiao")
 public class Regiao extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name = "nome", length = 100, nullable = false)
+    @Column(name = "nome", length = 100, nullable = false)
     @Size(min = 3, max = 100)
     private String nome;
     @Cep
@@ -31,7 +31,7 @@ public class Regiao extends BaseEntity {
     @Cep
     @Column(name = "cepFinal", nullable = false)
     private String cepFinal;
-    
+
     public String getNome() {
         return nome;
     }
@@ -54,6 +54,10 @@ public class Regiao extends BaseEntity {
 
     public void setCepFinal(String cepFinal) {
         this.cepFinal = cepFinal;
+    }
+
+    public long transformaStringCepEmLong(String cep) {
+        return Long.valueOf(cep.substring(0, 5));
     }
 
 }

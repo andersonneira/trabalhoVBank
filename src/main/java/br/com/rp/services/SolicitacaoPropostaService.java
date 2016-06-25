@@ -1,5 +1,6 @@
 package br.com.rp.services;
 
+import br.com.rp.domain.Regiao;
 import br.com.rp.domain.SolicitacaoProposta;
 import br.com.rp.repository.SolicitacaoPropostaRepository;
 import java.util.List;
@@ -15,5 +16,9 @@ public class SolicitacaoPropostaService {
 
     public List<SolicitacaoProposta> getAllSolicitacoesPropostas() {
         return repository.getAll();
+    }
+    
+    public List<Regiao> buscarSolicitacoesPorRegiao(Regiao regiao){
+      return  repository.buscarSolicitacoesPorRegiao(regiao);
     }
 }
