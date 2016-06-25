@@ -13,21 +13,21 @@ import br.com.rp.anotations.Email;
 @Table(name = "solicitacao_proposta")
 public class SolicitacaoProposta extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	@Column(name = "nome", length = 100, nullable = false)
+    private static final long serialVersionUID = 1L;
+
+    @Column(name = "nome", length = 100, nullable = false)
     @Size(min = 3, max = 100)
     private String nome;
     @Column(name = "email", nullable = false)
     @Email
     private String email;
-    
+
     @Column(name = "motivo_rejeicao")
     private String motivoRejeicao;
     @Cep
     private String cep;
-    
-    @Column(name = "documento", nullable=false, unique=true)
+
+    @Column(name = "documento", nullable = false, unique = true)
     @Documento
     private String documento;
 
@@ -38,6 +38,13 @@ public class SolicitacaoProposta extends BaseEntity {
         this.nome = nome;
         this.email = email;
         this.cep = cep;
+    }
+
+    public SolicitacaoProposta(String nome, String email, String cep, String documento) {
+        this.nome = nome;
+        this.email = email;
+        this.cep = cep;
+        this.documento = documento;
     }
 
     public String getNome() {
@@ -72,11 +79,11 @@ public class SolicitacaoProposta extends BaseEntity {
         this.cep = cep;
     }
 
-	public String getDocumento() {
-		return documento;
-	}
+    public String getDocumento() {
+        return documento;
+    }
 
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
 }

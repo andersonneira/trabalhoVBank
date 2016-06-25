@@ -27,7 +27,7 @@ public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
         sp.setNome("1");
         sp.setEmail("andersonneira@gmail.com");
         sp.setCep("87040-000");
-        sp.setDocumento("889.999.888-07");
+        sp.setDocumento("866.576.159-49");
         repository.save(sp);
         
     }
@@ -38,7 +38,7 @@ public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
         sp.setNome("Anderson B");
         sp.setEmail("an");
         sp.setCep("87040-000");
-        sp.setDocumento("889.999.888-08");
+        sp.setDocumento("866.576.159-49");
         repository.save(sp);
     }
     
@@ -48,7 +48,7 @@ public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
         sp.setNome("Anderson B");
         sp.setEmail("teste@gmail.com");
         sp.setCep("87040-000");
-        sp.setDocumento("889.999.888-09");
+        sp.setDocumento("866.576.159-49");
         sp = repository.save(sp);
         Assert.assertNotNull(sp.getId());
     }
@@ -59,7 +59,7 @@ public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
     	sp.setNome("Anderson B");
     	sp.setEmail("teste@gmail.com");
     	sp.setCep("87.04.00.00");
-    	sp.setDocumento("889.999.888-10");
+    	sp.setDocumento("866.576.159-49");
     	sp = repository.save(sp);
     	Assert.assertNotNull(sp.getId());
     }
@@ -92,14 +92,14 @@ public class SolicitacaoPropostaRepositoryTest extends AbstractTest {
     	sp.setNome("Anderson B");
     	sp.setEmail("teste@gmail.com");
     	sp.setCep("87040-000");
-    	sp.setDocumento("88.9999.88.8-15");
+    	sp.setDocumento("866.576.159-49");
     	sp = repository.save(sp);
     	
     	SolicitacaoProposta sp1 = new SolicitacaoProposta();
     	sp1.setNome("Anderson B");
     	sp1.setEmail("teste@gmail.com");
     	sp1.setCep("87040-000");
-    	sp1.setDocumento("88.9999.88.8-15");
+    	sp1.setDocumento("866.576.159-49");
     	sp1 = repository.save(sp1);
     	
     	

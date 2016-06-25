@@ -50,7 +50,7 @@ public class SolicitaPropostaTest extends AbstractTest {
 	@Test
 	@UsingDataSet("db/solicitaproposta.xml")
 	public void deveRetornarUmaSolicitacaoProposta() {
-		Long id = new Long(1);
+                Long id = new Long(1);
 		SolicitacaoProposta sp = service.findById(id);
 		String anderson = new String("anderson");
 		Assert.assertEquals(anderson, sp.getNome());

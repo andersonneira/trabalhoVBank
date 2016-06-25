@@ -10,11 +10,15 @@ import br.com.rp.repository.ClienteRepository;
 
 @Stateless
 public class ClienteService {
-
-	@EJB
-	private ClienteRepository repository;
-	
-	public List<Cliente> getAll() {
-		return repository.getAll();
-	}
+    
+    @EJB
+    private ClienteRepository repository;
+    
+    public List<Cliente> getAll() {
+        return repository.getAll();
+    }
+    
+    public boolean verificaSeJaExisteEsteDocumentoInserido(String documento) {
+        return repository.verificaSeJaExisteEsteDocumentoInserido(documento);
+    }
 }
