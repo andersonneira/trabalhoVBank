@@ -34,6 +34,73 @@ public class ContaCorrenteRest {
 	private PagamentoService pagamentoService;
 	
 	@POST
+	@Path("/cancelschedule")
+	public String cancelarAgendamento(@FormParam("agendamentoId") Long agendamentoId) {
+		try {
+			pagamentoService.cancelarAgendamento(agendamentoId);
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
+	@Path("/taxbillschedule")
+	public String agendarPagamentoImposto(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido,
+			@FormParam("datapagamento") String datapagamento, @FormParam("datavencimento") String datavencimento) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			pagamentoService.agendarPagamentoImposto(contaId, linhaDigitavel, valor, favorecido, sdf.parse(datapagamento), sdf.parse(datavencimento));
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
+	@Path("/electricitybillschedule")
+	public String agendarPagamentoLuz(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido,
+			@FormParam("datapagamento") String datapagamento, @FormParam("datavencimento") String datavencimento) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			pagamentoService.agendarPagamentoLuz(contaId, linhaDigitavel, valor, favorecido, sdf.parse(datapagamento), sdf.parse(datavencimento));
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
+	@Path("/waterbillschedule")
+	public String agendarPagamentoAgua(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido,
+			@FormParam("datapagamento") String datapagamento, @FormParam("datavencimento") String datavencimento) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			pagamentoService.agendarPagamentoAgua(contaId, linhaDigitavel, valor, favorecido, sdf.parse(datapagamento), sdf.parse(datavencimento));
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
+	@Path("/billschedule")
+	public String agendarPagamentoTitulo(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
+			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido,
+			@FormParam("datapagamento") String datapagamento, @FormParam("datavencimento") String datavencimento) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			pagamentoService.agendarPagamentoTitulo(contaId, linhaDigitavel, valor, favorecido, sdf.parse(datapagamento), sdf.parse(datavencimento));
+			return "ok";
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	
+	@POST
 	@Path("/taxbillpayment")
 	public String realizarPagamentoImposto(@FormParam("contaId") Long contaId, @FormParam("valor") BigDecimal valor,
 			@FormParam("linhaDigitavel") String linhaDigitavel, @FormParam("favorecido") String favorecido) {

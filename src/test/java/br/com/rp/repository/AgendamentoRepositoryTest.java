@@ -158,10 +158,27 @@ public class AgendamentoRepositoryTest extends AbstractTest {
 	}
 	
 	@Test
-//	@UsingDataSet("db/regiao.xml")
 	public void deveBuscarTodosAgendamentosPorContaRealizadosAteOMomento() {
 		repository.save(agendamento);
 		List<Agendamento> lst = repository.findMovimentacaoRealizadaByContaCorrenteId(agendamento.getConta().getId());
+		Assert.assertNotEquals(0, lst.size());
+	}
+	
+	@Test
+	public void deveBuscarTodosAgendamentosPendentesPorConta() {
+		agendamento.setEstado(EstadoAgendamento.PENDENTE);
+		repository.save(agendamento);
+		List<Agendamento> lst = repository.findAgendamentosPendentesByContaCorrenteId(agendamento.getConta().getId());
+		Assert.assertNotEquals(0, lst.size());
+	}
+	
+	@Test
+	public void deveBuscarTodosAgendamentosPendentesPorContaPorData() {
+		Calendar cal = Calendar.getInstance();
+		cal.add(2, Calendar.DAY_OF_MONTH);
+		agendamento.setEstado(EstadoAgendamento.PENDENTE);
+		repository.save(agendamento);
+		List<Agendamento> lst = repository.findAgendamentosPendentesByContaCorrenteIdByDataFinal(agendamento.getConta().getId(), cal.getTime());
 		Assert.assertNotEquals(0, lst.size());
 	}
 }

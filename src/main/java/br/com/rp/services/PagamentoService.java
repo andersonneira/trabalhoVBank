@@ -2,6 +2,7 @@ package br.com.rp.services;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -48,6 +49,10 @@ public class PagamentoService {
 	}
 
 	private void realizarPagamento(Long contaId, String linhaDigitavel, TipoPagamento tipoPagamento, BigDecimal valor, String favorecido) throws Exception {
+		realizarPagamento(contaId, linhaDigitavel, tipoPagamento, valor, favorecido, null);
+	}
+	
+	private void realizarPagamento(Long contaId, String linhaDigitavel, TipoPagamento tipoPagamento, BigDecimal valor, String favorecido, Date datapagamento) throws Exception {
 		contaCorrenteService.validaSaldoTransacao(contaId, valor);
 		ContaCorrente conta = contaCorrenteService.getContaCorrenteById(contaId);
 		
@@ -66,9 +71,51 @@ public class PagamentoService {
 		Agendamento ag = new Agendamento();
 		ag.setConta(conta);
 		ag.setDataInclusao(Calendar.getInstance().getTime());
-		ag.setDataRealizacao(Calendar.getInstance().getTime());
-		ag.setEstado(EstadoAgendamento.REALIZADO);
+		if (datapagamento != null) {
+			ag.setEstado(EstadoAgendamento.PENDENTE);
+			ag.setDataRealizacao(datapagamento);
+		} else {
+			ag.setEstado(EstadoAgendamento.REALIZADO);
+			ag.setDataRealizacao(Calendar.getInstance().getTime());
+		}
 		ag.setTransacao(tr);
+		agendamentoRepository.save(ag);
+	}
+	
+	public void agendarPagamentoTitulo(Long contaId, String linhaDigitavel, BigDecimal valor, String favorecido, Date datapagamento, Date datavencimento) throws Exception {
+		if (datapagamento.after(datavencimento)) {
+			throw new Exception("Pagamento não pode ser agendado após à data de vencimento");
+		}
+		realizarPagamento(contaId, linhaDigitavel, TipoPagamento.TITULO, valor, favorecido, datapagamento);
+	}
+
+	public void agendarPagamentoAgua(Long contaId, String linhaDigitavel, BigDecimal valor, String favorecido, Date datapagamento, Date datavencimento) throws Exception {
+		if (datapagamento.after(datavencimento)) {
+			throw new Exception("Pagamento não pode ser agendado após à data de vencimento");
+		}
+		realizarPagamento(contaId, linhaDigitavel, TipoPagamento.AGUA, valor, favorecido, datapagamento);
+	}
+	
+	public void agendarPagamentoLuz(Long contaId, String linhaDigitavel, BigDecimal valor, String favorecido, Date datapagamento, Date datavencimento) throws Exception {
+		if (datapagamento.after(datavencimento)) {
+			throw new Exception("Pagamento não pode ser agendado após à data de vencimento");
+		}
+		realizarPagamento(contaId, linhaDigitavel, TipoPagamento.LUZ, valor, favorecido, datapagamento);
+	}
+	
+	public void agendarPagamentoImposto(Long contaId, String linhaDigitavel, BigDecimal valor, String favorecido, Date datapagamento, Date datavencimento) throws Exception {
+		if (datapagamento.after(datavencimento)) {
+			throw new Exception("Pagamento não pode ser agendado após à data de vencimento");
+		}
+		realizarPagamento(contaId, linhaDigitavel, TipoPagamento.IMPOSTO, valor, favorecido, datapagamento);
+	}
+	
+	public void cancelarAgendamento(Long agendamentoId) throws Exception {
+		Agendamento ag = agendamentoRepository.findById(agendamentoId);
+		if (EstadoAgendamento.REALIZADO.equals(ag.getEstado())) {
+			throw new Exception("Pagamento já realizado");
+		}
+		ag.setEstado(EstadoAgendamento.CANCELADO);
 		agendamentoRepository.save(ag);
 	}
 }
