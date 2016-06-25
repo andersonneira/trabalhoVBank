@@ -6,6 +6,9 @@
 package br.com.rp.services;
 
 import java.nio.charset.StandardCharsets;
+
+import javax.ejb.Stateless;
+
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
@@ -13,10 +16,11 @@ import org.apache.commons.mail.HtmlEmail;
  *
  * @author anderson
  */
+@Stateless
 public class EmailService {
 
     private static final String ENDERECO_EMAIL = "posjava.unicesumar@gmail.com";
-    private static final String SENHA = "";
+    private static final String SENHA = "posjava258@";
 
     public static void enviarEmailConfirmacaoConta() {
         new Thread() {
@@ -30,15 +34,15 @@ public class EmailService {
             }
         }.start();
     }
-
-    public static void enviarEmailTeste() {
+    
+    public static void enviarEmailRejeicao(String mensagem, String emaill) {
         new Thread() {
             public void run() {
                 try {
                     HtmlEmail email = configurarEmailPadrao();
-                    email.setSubject("Teste");
-                    email.addTo("andersonneira@gmail.com");
-                    email.setMsg("teste");
+                    email.setSubject("Solicitação de proposta Vbank Rejeitada");
+                    email.addTo(emaill);
+                    email.setMsg(mensagem);
                     email.send();
                 } catch (EmailException ex) {
 
