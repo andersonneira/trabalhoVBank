@@ -11,12 +11,17 @@ import org.junit.Test;
 import br.com.rp.AbstractTest;
 import br.com.rp.domain.Regiao;
 import br.com.rp.domain.SolicitacaoProposta;
+import br.com.rp.services.EmailService;
 import br.com.rp.services.SolicitacaoPropostaService;
 
 public class SolicitaPropostaTest extends AbstractTest {
 
 	@EJB
 	private SolicitacaoPropostaService service;
+	
+	@EJB
+	private EmailService emailService;
+	
 
 	@Test
 	@UsingDataSet("db/solicitaproposta.xml")
@@ -54,5 +59,16 @@ public class SolicitaPropostaTest extends AbstractTest {
 		SolicitacaoProposta sp = service.findById(id);
 		String anderson = new String("anderson");
 		Assert.assertEquals(anderson, sp.getNome());
+	}
+	@Test
+	@UsingDataSet("db/solicitaproposta.xml")
+	public void deveSetarMotivoRejeicaoRejeicaoProposta() {
+                Long id = new Long(3);
+                String motivoRejeicao = new String("Proposta rejeitada");
+		SolicitacaoProposta sp = service.findById(id);
+		sp.setMotivoRejeicao(motivoRejeicao);
+		service.rejeitarProposta(id, motivoRejeicao);
+		Assert.assertEquals(motivoRejeicao, sp.getMotivoRejeicao());
+		
 	}
 }

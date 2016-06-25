@@ -21,7 +21,7 @@ public class RegiaoServiceTeste extends AbstractTest {
     @UsingDataSet("db/regiao.xml")
     public void deveRetornar1Regiao() {
         List<Regiao> regioes = service.getAllRegioes();
-        Assert.assertEquals(1, regioes.size());
+        Assert.assertEquals(2, regioes.size());
     }
 
 }

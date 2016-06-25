@@ -26,10 +26,13 @@ public class SolicitacaoPropostaService {
 	public SolicitacaoProposta findById(Long id) {
 		return repository.findById(id);
 	}
-	public SolicitacaoProposta rejeitarProposta(Long id, String motivoRejeicao) {
-		SolicitacaoProposta spRejeitada = new SolicitacaoProposta();
-		spRejeitada = repository.findById(id);
-		spRejeitada.setMotivoRejeicao(motivoRejeicao);
-		return repository.save(spRejeitada);
+	public SolicitacaoProposta save(SolicitacaoProposta sp) {
+		return repository.save(sp);
 	}
+	public SolicitacaoProposta rejeitarProposta(Long id, String motivoRejeicao) {
+			SolicitacaoProposta spRejeitada = new SolicitacaoProposta();
+			spRejeitada = findById(id);
+			spRejeitada.setMotivoRejeicao(motivoRejeicao);
+			return save(spRejeitada);
+		}
 }
