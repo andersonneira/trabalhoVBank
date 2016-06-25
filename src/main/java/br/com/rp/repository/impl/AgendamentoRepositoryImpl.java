@@ -20,9 +20,11 @@ public class AgendamentoRepositoryImpl extends AbstractRepositoryImpl<Agendament
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Agendamento> findMovimentacaoRealizadaByContaCorrenteId(Long contaCorrenteId) {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MINUTE, 1);
 		Query qry = em.createQuery("from Agendamento ag where ag.conta.id = :contaCorrenteId and ag.dataRealizacao <= :dataRealizacao", Agendamento.class);
 		qry.setParameter("contaCorrenteId", contaCorrenteId);
-		qry.setParameter("dataRealizacao", Calendar.getInstance().getTime());
+		qry.setParameter("dataRealizacao", cal.getTime());
 		return qry.getResultList();
 	}
 
