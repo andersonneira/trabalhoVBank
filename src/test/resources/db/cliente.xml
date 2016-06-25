@@ -1,5 +1,4 @@
 <dataset>
 	<regiao id="1" nome="Norte" cepInicial="87000-000" cepFinal="88000-000" />
-	<regiao id="1000" nome="Norte" cepInicial="87000-000" cepFinal="88000-000" />
 	
 </dataset>

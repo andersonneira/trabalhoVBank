@@ -11,6 +11,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 
+import org.jboss.arquillian.persistence.CleanupUsingScript;
+import org.jboss.arquillian.persistence.TestExecutionPhase;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,6 +27,7 @@ import br.com.rp.enums.TipoConta;
  *
  * @author anderson
  */
+//@CleanupUsingScript(value="script deleçao", phase=TestExecutionPhase.AFTER)
 public class ContaCorrenteRespositoryTest extends AbstractTest {
 
     private static final String _NOME_VALIDO = "Teste";

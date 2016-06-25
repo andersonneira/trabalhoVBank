@@ -8,6 +8,7 @@ package br.com.rp.domain;
 import br.com.rp.enums.StatusConta;
 import br.com.rp.enums.TipoConta;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,11 +58,14 @@ public class ContaCorrente extends BaseEntity {
 
     /**
      * Metodo que buscao saldo da conta ( contabiliza todas as trasações).
+     * @param lstAgendamnetos 
      *
      * @return saldo da conta
      */
-    public BigDecimal getSaldo() {
-        return BigDecimal.ZERO;
+    public BigDecimal getSaldo(List<Agendamento> lstAgendamnetos) {
+    	BigDecimal soma = lstAgendamnetos.stream().map(agenda -> agenda.getTransacao().getValor()).reduce((b1, b2) -> b1.add(b2)).get();
+    	soma.add(getLimite());
+        return soma;
     }
 
     /**

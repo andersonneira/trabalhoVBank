@@ -3,6 +3,7 @@ package br.com.rp.repository;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 
@@ -20,6 +21,7 @@ import br.com.rp.enums.EstadoAgendamento;
 import br.com.rp.enums.StatusConta;
 import br.com.rp.enums.TipoConta;
 
+//@CleanupUsingScript(value="db/cleanup.sql", phase=TestExecutionPhase.AFTER)
 public class AgendamentoRepositoryTest extends AbstractTest {
 
 	private static final EstadoAgendamento _ESTADO_VALIDO = EstadoAgendamento.PENDENTE;
@@ -153,5 +155,13 @@ public class AgendamentoRepositoryTest extends AbstractTest {
 		agendamento.setConta(null);
 		repository.save(agendamento);
 		Assert.assertNotNull(agendamento.getId());
+	}
+	
+	@Test
+//	@UsingDataSet("db/regiao.xml")
+	public void deveBuscarTodosAgendamentosPorContaRealizadosAteOMomento() {
+		repository.save(agendamento);
+		List<Agendamento> lst = repository.findMovimentacaoRealizadaByContaCorrenteId(agendamento.getConta().getId());
+		Assert.assertNotEquals(0, lst.size());
 	}
 }
