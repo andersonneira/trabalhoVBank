@@ -34,6 +34,10 @@ public class ContaCorrenteService {
 		return repository.getAll();
 	}
 	
+	public ContaCorrente getContaCorrenteById(Long id) {
+		return repository.findById(id);
+	}
+	
 	public List<ContaCorrenteMovimentacaoDTO> getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(Long contaCorrenteId, Date dataInicial, Date dataFinal) {
 		List<ContaCorrenteMovimentacaoDTO> lstResult = new ArrayList<ContaCorrenteMovimentacaoDTO>();
 		List<Agendamento> lstAgendamentos = agendamentoRepository.findMovimentacaoRealizadaByContaCorrenteIdByDataInicialByDataFinal(contaCorrenteId, dataInicial, dataFinal);
@@ -66,9 +70,6 @@ public class ContaCorrenteService {
 	}
 
 	private class ResumoContas implements java.util.concurrent.Callable<ContaCorrenteResumoDTO> {
-		@EJB
-		private AgendamentoRepository agendamentoRepository;
-
 		private ContaCorrente contaCorrente;
 
 		public ResumoContas(ContaCorrente contaCorrente) {

@@ -64,8 +64,7 @@ public class ContaCorrente extends BaseEntity {
      */
     public BigDecimal getSaldo(List<Agendamento> lstAgendamnetos) {
     	BigDecimal soma = lstAgendamnetos.stream().map(agenda -> agenda.getTransacao().getValor()).reduce((b1, b2) -> b1.add(b2)).get();
-    	soma.add(getLimite());
-        return soma;
+        return soma.add(getLimite());
     }
 
     /**

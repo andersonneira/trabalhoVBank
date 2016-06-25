@@ -1,4 +1,4 @@
 <dataset>
-	<regiao id="1" nome="Norte" cepInicial="87000-000" cepFinal="88000-000" />
+	<Cliente id="1000" data_cadastro="2016-06-24 00:00:00" email="teste@gmail.com.br" nome="Teste" cep="88000-005" documento="924.928.974-00" regiao="1000" />
 	
 </dataset>
