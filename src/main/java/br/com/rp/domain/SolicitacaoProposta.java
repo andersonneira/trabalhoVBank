@@ -5,10 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
-
 import br.com.rp.anotations.Cep;
 import br.com.rp.anotations.Documento;
+import br.com.rp.anotations.Email;
 
 @Entity
 @Table(name = "solicitacao_proposta")
