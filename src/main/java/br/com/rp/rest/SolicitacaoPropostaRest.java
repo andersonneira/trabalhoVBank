@@ -4,8 +4,12 @@ import br.com.rp.domain.SolicitacaoProposta;
 import br.com.rp.repository.SolicitacaoPropostaRepository;
 
 import javax.ejb.EJB;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 @Path("/requestproposal")
@@ -15,7 +19,7 @@ public class SolicitacaoPropostaRest {
     @EJB
     private SolicitacaoPropostaRepository repository;
 
-    @POST
+    @GET
     public String addSolicitacaoProposta(String nome, String email, String cep) {
         try {
             repository.save(new SolicitacaoProposta(nome, email, cep));
@@ -24,5 +28,26 @@ public class SolicitacaoPropostaRest {
             return e.getMessage();
         }
     }
+    @Path("/findProposalByid/{id}")
+    @GET
+    public SolicitacaoProposta consultaSolicitacaoPropostaPeloId(@PathParam("id")String id){
+    	return repository.findById(Long.valueOf(id));
+    }
+    @Path("/rejectProposal/{id}/{motivoRejeicao}")
+    @PUT
+    public String rejeitaeSolicitacaoProposta(@PathParam("motivoRejeicao")String motivoRejeicao,@PathParam("id")String id) {
+        try {
+        	SolicitacaoProposta sp = new SolicitacaoProposta();
+        	sp = repository.findById(Long.valueOf(id));
+        	sp.setMotivoRejeicao(motivoRejeicao);
+        	repository.save(sp);
+        	//enviar email com motivo da rejeição
+            return motivoRejeicao;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+    
+    
 
 }
