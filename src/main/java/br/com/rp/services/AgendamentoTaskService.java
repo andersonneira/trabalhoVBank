@@ -1,12 +1,10 @@
-package br.com.rp.service;
+package br.com.rp.services;
 
 import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-
-import br.com.rp.services.AgendamentoService;
 
 @Singleton
 @Startup
