@@ -20,6 +20,7 @@ import br.com.rp.anotations.validators.CepValidator;
 import br.com.rp.domain.Log;
 import br.com.rp.dto.ContaCorrenteResumoDTO;
 import br.com.rp.enums.StatusConta;
+import br.com.rp.interceptors.LogTransacaoInterceptor;
 import br.com.rp.repository.LogRepositoryTest;
 import br.com.rp.repository.Repository;
 import br.com.rp.repository.impl.AbstractRepositoryImpl;
@@ -64,6 +65,8 @@ public abstract class AbstractTest {
 				.addPackage(LogServiceTest.class.getPackage())
 				.addPackage(StatusConta.class.getPackage())
 				.addPackage(ContaCorrenteResumoDTO.class.getPackage())
+                        
+				.addPackage(LogTransacaoInterceptor.class.getPackage())
                                 
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml").addAsWebInfResource("cesumar-ds.xml")

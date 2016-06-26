@@ -1,0 +1,42 @@
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2 |A operação deu certo 
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2 |A operação deu certo 
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2 |A operação deu certo 
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2 |A operação deu certo 
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null |A operação deu certo 
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2 |A operação deu certo 
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 342342 | valor  = 1000 | agenciadestino001-9| contadestino = 091233-2| A operação falhou
+contaId  = 1000 | valor  = 1000 | agenciadestinonull-| contadestino = -null| A operação falhou

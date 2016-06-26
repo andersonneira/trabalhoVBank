@@ -1,0 +1,56 @@
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação deu certo 
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
+contaId  = 1000 | valor  = 1000 | contadestino = 1220122022-1 | A operação deu certo 
+contaId  = 3331 | valor  = 1000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 1000 | valor  = 10000 | contadestino = 1220122022-1 | A operação falhou
+contaId  = 3331 | valor  = 1000 | contadestino = 831-0 | A operação falhou
