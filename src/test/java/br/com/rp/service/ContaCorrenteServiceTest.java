@@ -72,23 +72,24 @@ public class ContaCorrenteServiceTest extends AbstractTest {
         Assert.assertNotNull(resumo);
     }
 
-//    @Test
-//    @UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
-//    public void deveTransferirParaClienteDoMesmoBanco() throws Exception {
-//        ContaCorrente cc = service.getContaCorrenteById(1000L);
-//        ContaCorrente ccDestino = service.getContaCorrenteById(1001L);
-//        Assert.assertNotNull(cc);
-//        Assert.assertNotNull(ccDestino);
-//
-//        int tr = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
-//        int trDestino = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(ccDestino.getId(), getHoraInicial(), getHoraFinal()).size();
-//        service.realizarTransferenciaEntreContas(cc.getId(), new BigDecimal(1000), ccDestino.getNumero(), ccDestino.getDigitoVerificador());
-//        int trAtualizado = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
-//        int trDestinoAtualizado = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(ccDestino.getId(), getHoraInicial(), getHoraFinal()).size();
-//
-//        Assert.assertTrue(tr < trAtualizado);
-//        Assert.assertTrue(trDestino < trDestinoAtualizado);
-//    }
+    @Test
+    @UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
+    public void deveTransferirParaClienteDoMesmoBanco() throws Exception {
+        ContaCorrente cc = service.getContaCorrenteById(1000L);
+        ContaCorrente ccDestino = service.getContaCorrenteById(1001L);
+        Assert.assertNotNull(cc);
+        Assert.assertNotNull(ccDestino);
+
+        int tr = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
+        int trDestino = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(ccDestino.getId(), getHoraInicial(), getHoraFinal()).size();
+        service.realizarTransferenciaEntreContas(cc.getId(), new BigDecimal(1000), ccDestino.getNumero(), ccDestino.getDigitoVerificador());
+        int trAtualizado = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
+        int trDestinoAtualizado = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(ccDestino.getId(), getHoraInicial(), getHoraFinal()).size();
+
+        Assert.assertTrue(tr < trAtualizado);
+        Assert.assertTrue(trDestino < trDestinoAtualizado);
+    }
+    
     @Test(expected = Exception.class)
     @UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
     public void naoDeveTransferirParaClienteDoMesmoBancoPorFaltaDeLimite() throws Exception {
@@ -115,18 +116,18 @@ public class ContaCorrenteServiceTest extends AbstractTest {
         service.realizarTransferenciaEntreContas(3331L, new BigDecimal(1000), "831", "0");
     }
 
-//    @Test
-//    @UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
-//    public void deveTransferirParaOutrosBancos() throws Exception {
-//        ContaCorrente cc = service.getContaCorrenteById(1000L);
-//        Assert.assertNotNull(cc);
-//
-//        int tr = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
-//        service.realizarTransferenciaOutrosBancos(cc.getId(), new BigDecimal(1000), "001", "9", "091233", "2");
-//        int trAtualizado = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
-//
-//        Assert.assertTrue(tr < trAtualizado);
-//    }
+    @Test
+    @UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
+    public void deveTransferirParaOutrosBancos() throws Exception {
+        ContaCorrente cc = service.getContaCorrenteById(1000L);
+        Assert.assertNotNull(cc);
+
+        int tr = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
+        service.realizarTransferenciaOutrosBancos(cc.getId(), new BigDecimal(1000), "001", "9", "091233", "2");
+        int trAtualizado = service.getMovimentacaoBancariaPorContaCorrenteIdPorIntervaloData(cc.getId(), getHoraInicial(), getHoraFinal()).size();
+
+        Assert.assertTrue(tr < trAtualizado);
+    }
     @Test(expected = Exception.class)
     @UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
     public void naoDeveTransferirParaOutrosBancosPorContaInvalida() throws Exception {
@@ -165,12 +166,6 @@ public class ContaCorrenteServiceTest extends AbstractTest {
 
     private Date getHoraFinal() {
         Calendar calFinal = Calendar.getInstance();
-        calFinal.set(Calendar.DAY_OF_MONTH, 24);
-        calFinal.set(Calendar.MONTH, 5);
-        calFinal.set(Calendar.YEAR, 2016);
-        calFinal.set(Calendar.HOUR, 25);
-        calFinal.set(Calendar.MINUTE, 59);
-        calFinal.set(Calendar.SECOND, 59);
         return calFinal.getTime();
     }
 
