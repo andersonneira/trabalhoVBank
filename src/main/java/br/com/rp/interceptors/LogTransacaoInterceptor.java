@@ -9,7 +9,9 @@ import br.com.rp.repository.ConfiguracaoRepository;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.ejb.EJB;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
@@ -27,18 +29,17 @@ public class LogTransacaoInterceptor {
     public Object logarTodasTransacoes(InvocationContext invocationContext) throws Exception {
         Object proceed = null;
         boolean deuErro = false;
-        String metodo = invocationContext.getMethod().getName();
-        try {            
+        try {
             if (podeFazerTransacoes()) {
                 proceed = invocationContext.proceed();
             } else {
-                
                 throw new Exception("Out of the transaction period");
             }
         } catch (Exception ex) {
             deuErro = true;
             throw ex;
         } finally {
+            String metodo = invocationContext.getMethod().getName();
             if (metodo.equals("realizarTransferenciaEntreContas")) {
                 criarLogTransfereciaMesmoBanco(invocationContext.getParameters(), deuErro);
             }
@@ -50,11 +51,10 @@ public class LogTransacaoInterceptor {
     }
 
     private boolean podeFazerTransacoes() {
-        Date agora = new Date();
-        Date abertura = repository.getConfiguracao().getHoraAberturaOperacao();
-        Date fechamento = repository.getConfiguracao().getHoraFechamentoOperacao();
-      
-        return ( agora.after(abertura) &&  agora.before(fechamento));
+        Date agora = GregorianCalendar.getInstance().getTime();
+        Date abertura = configurarData(repository.getConfiguracao().getHoraAberturaOperacao());
+        Date fechamento = configurarData(repository.getConfiguracao().getHoraFechamentoOperacao());
+        return (agora.after(abertura) && agora.before(fechamento));
     }
 
     private void criarLogTransfereciaMesmoBanco(Object[] param, boolean deuErro) {
@@ -84,5 +84,14 @@ public class LogTransacaoInterceptor {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static Date configurarData(Date date) {
+        Calendar cal = new GregorianCalendar();
+        cal.set(Calendar.HOUR_OF_DAY, date.getHours());
+        cal.set(Calendar.MINUTE, date.getMinutes());
+        cal.set(Calendar.SECOND, date.getSeconds());
+        cal.set(Calendar.MILLISECOND, 00);
+        return cal.getTime();
     }
 }
