@@ -35,4 +35,8 @@ public class SolicitacaoPropostaService {
 			spRejeitada.setMotivoRejeicao(motivoRejeicao);
 			return save(spRejeitada);
 		}
+	public SolicitacaoProposta aprovarProposta (){
+			
+		return null;
+	}
 }

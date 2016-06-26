@@ -50,6 +50,21 @@ public class EmailService {
             }
         }.start();
     }
+    public static void enviarEmailAprovacao(String mensagem, String emaill) {
+        new Thread() {
+            public void run() {
+                try {
+                    HtmlEmail email = configurarEmailPadrao();
+                    email.setSubject("Solicitação de proposta Vbank aprovada");
+                    email.addTo(emaill);
+                    email.setMsg(mensagem);
+                    email.send();
+                } catch (EmailException ex) {
+
+                }
+            }
+        }.start();
+    }
 
     private static HtmlEmail configurarEmailPadrao() throws EmailException {
         HtmlEmail email = new HtmlEmail();

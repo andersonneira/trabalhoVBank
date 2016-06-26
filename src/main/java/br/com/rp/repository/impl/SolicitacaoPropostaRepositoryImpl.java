@@ -52,4 +52,9 @@ public class SolicitacaoPropostaRepositoryImpl extends
 		return super.findById(id);
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public void remove(Long id) {
+		super.remove(id);
+	}
+
 }
