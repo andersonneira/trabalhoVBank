@@ -17,7 +17,7 @@ public class EnvioInformacoesTaskService {
 	private EnvioMatrizService matrizService;
 	
 	@Asynchronous
-	@Schedule(second="0", minute="5", hour="*", dayOfMonth="*", month="*", year="*")
+	@Schedule(second="0", minute="*/5", hour="*", dayOfMonth="*", month="*", year="*")
 	public void realizarEnvioInformacoesBacen() {
 		bacenService.envioInformacoes();
 	}
