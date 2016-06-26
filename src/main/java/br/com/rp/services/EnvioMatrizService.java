@@ -48,14 +48,23 @@ public class EnvioMatrizService {
 		List<Agendamento> lstAgendamentos = agendamentoRepository
 				.findAgendamentosRealizadosNaoEnviadosAoBacenByDataFinal(Calendar.getInstance().getTime());
 		lstAgendamentos.forEach(agendamento -> {
-			if (agendamento.getTransacao().getPagamento() != null) {
-				enviarPagamento(agendamento);
-			} else if (agendamento.getTransacao().getDepositoCheque() != null) {
-				enviarDepositoCheque(agendamento);
-			} else {
-				enviarTransferencia(agendamento);
-			}
+			envioInformacao(agendamento);
 		});
+	}
+
+	public void envioInformacao(Long agendamentoId) {
+		Agendamento agendamento = agendamentoRepository.findById(agendamentoId);
+		envioInformacao(agendamento);
+	}
+	
+	private void envioInformacao(Agendamento agendamento) {
+		if (agendamento.getTransacao().getPagamento() != null) {
+			enviarPagamento(agendamento);
+		} else if (agendamento.getTransacao().getDepositoCheque() != null) {
+			enviarDepositoCheque(agendamento);
+		} else {
+			enviarTransferencia(agendamento);
+		}
 	}
 
 	private void enviarTransferencia(Agendamento agendamento) {

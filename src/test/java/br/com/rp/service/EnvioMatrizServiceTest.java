@@ -34,4 +34,14 @@ public class EnvioMatrizServiceTest extends AbstractTest {
 		List<Agendamento> lstAtualizado = agendamentoRepository.findAgendamentosRealizadosNaoEnviadosAMatrizByDataFinal(Calendar.getInstance().getTime());
 		Assert.assertEquals(0, lstAtualizado.size());
 	}
+	
+	@Test
+	@UsingDataSet({"db/regiao.xml", "db/cliente.xml", "db/conta.xml", "db/transacao.xml", "db/agendamento.xml"})
+	public void deveRealizarEnvioInformacaoUnico() throws Exception {
+		Agendamento agendamento = agendamentoRepository.findById(1000L);
+		Assert.assertNull(agendamento.getTransacao().getEnvioMatriz());
+		service.envioInformacao(1000L);
+		Agendamento agendamentoAtualizado = agendamentoRepository.findById(1000L);
+		Assert.assertNotNull(agendamentoAtualizado.getTransacao().getEnvioMatriz());
+	}
 }

@@ -1,6 +1,7 @@
 package br.com.rp.services;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -35,5 +36,13 @@ public class AgendamentoService {
 				repository.save(agendamento);
 			}
 		});
+	}
+	
+	public List<Agendamento> getAgendamentosRealizadosNaoEnviadosAMatrizByDataFinal(Date dataFinal) {
+		return repository.findAgendamentosRealizadosNaoEnviadosAMatrizByDataFinal(dataFinal);
+	}
+	
+	public List<Agendamento> getAgendamentosRealizadosNaoEnviadosAoBacenByDataFinal(Date dataFinal) {
+		return repository.findAgendamentosRealizadosNaoEnviadosAoBacenByDataFinal(dataFinal);
 	}
 }
