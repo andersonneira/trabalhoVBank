@@ -24,7 +24,7 @@ import br.com.rp.enums.TipoConta;
 //@CleanupUsingScript(value="db/cleanup.sql", phase=TestExecutionPhase.AFTER)
 public class AgendamentoRepositoryTest extends AbstractTest {
 
-	private static final EstadoAgendamento _ESTADO_VALIDO = EstadoAgendamento.PENDENTE;
+	private static final EstadoAgendamento _ESTADO_VALIDO = EstadoAgendamento.REALIZADO;
 	private static final Date _DATA_INCLUSAO_VALIDA = Calendar.getInstance().getTime();
 	private static final Date _DATA_REALIZACAO_VALIDA = Calendar.getInstance().getTime();
 	
