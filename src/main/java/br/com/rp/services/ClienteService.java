@@ -21,4 +21,7 @@ public class ClienteService {
     public boolean verificaSeJaExisteEsteDocumentoInserido(String documento) {
         return repository.verificaSeJaExisteEsteDocumentoInserido(documento);
     }
+    public Cliente save(Cliente cliente){
+    	return repository.save(cliente);
+    }
 }

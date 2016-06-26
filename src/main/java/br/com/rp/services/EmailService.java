@@ -57,7 +57,7 @@ public class EmailService {
                     HtmlEmail email = configurarEmailPadrao();
                     email.setSubject("Solicitação de proposta Vbank aprovada");
                     email.addTo(emaill);
-                    email.setMsg(mensagem);
+                    email.setMsg("Altere sua senha no primeiro acesso!!! A senha padrão de aesso de sua conta é a junção do seu cpf mais seu CEP com os caracteres especiais /n" + mensagem);
                     email.send();
                 } catch (EmailException ex) {
 
