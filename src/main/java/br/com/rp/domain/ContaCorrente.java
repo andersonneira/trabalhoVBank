@@ -27,9 +27,9 @@ import javax.validation.constraints.Size;
 @Table(name = "conta_corrente")
 public class ContaCorrente extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name = "numero", length = 10, nullable = false)
+    @Column(name = "numero", length = 10, nullable = false)
     @Size(min = 3, max = 10)
     private String numero;
 
@@ -52,18 +52,23 @@ public class ContaCorrente extends BaseEntity {
     @JoinColumn(name = "cliente", nullable = false)
     private Cliente cliente;
 
+    @Column(name = "senha", length = 8)
+    @Size(min = 8, max = 20)
+    private String senha;
+
     public ContaCorrente() {
         gerarConta();
     }
 
     /**
      * Metodo que buscao saldo da conta ( contabiliza todas as trasações).
-     * @param lstAgendamnetos 
+     *
+     * @param lstAgendamnetos
      *
      * @return saldo da conta
      */
     public BigDecimal getSaldo(List<Agendamento> lstAgendamnetos) {
-    	BigDecimal soma = lstAgendamnetos.stream().map(agenda -> agenda.getTransacao().getValor()).reduce((b1, b2) -> b1.add(b2)).get();
+        BigDecimal soma = lstAgendamnetos.stream().map(agenda -> agenda.getTransacao().getValor()).reduce((b1, b2) -> b1.add(b2)).get();
         return soma.add(getLimite());
     }
 
@@ -71,11 +76,11 @@ public class ContaCorrente extends BaseEntity {
      * Quando uma conta for iniciada esse metodo irá gerar o número e o digito
      * verificador da conta.
      */
-    private void gerarConta() { 
+    private void gerarConta() {
         Random rnd = new Random();
         String log = "" + Math.log10(1000000 + rnd.nextInt(9000000));
-        this.digitoVerificador = log.substring(log.length() -1);
-        this.numero = log.substring(3, 8);        
+        this.digitoVerificador = log.substring(log.length() - 1);
+        this.numero = log.substring(3, 8);
     }
 
     public String getNumero() {
@@ -118,4 +123,11 @@ public class ContaCorrente extends BaseEntity {
         this.cliente = cliente;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

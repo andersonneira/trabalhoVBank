@@ -25,9 +25,9 @@ public class SolicitaPropostaTest extends AbstractTest {
 
 	@Test
 	@UsingDataSet("db/solicitaproposta.xml")
-	public void deveRetornarDuasSolicitacoesPrposta() {
+	public void deveRetornarTresSolicitacoesPrposta() {
 		List<SolicitacaoProposta> sp = service.getAllSolicitacoesPropostas();
-		Assert.assertEquals(2, sp.size());
+		Assert.assertEquals(3, sp.size());
 	}
 
 	@Test
@@ -43,12 +43,12 @@ public class SolicitaPropostaTest extends AbstractTest {
 
 	@Test
 	@UsingDataSet("db/solicitaproposta.xml")
-	public void deveRetornarUmaListaComDuasSolicitacaoProposta() {
+	public void deveRetornarUmaListaComTresSolicitacaoProposta() {
 		Regiao regiao = new Regiao();
 		regiao.setCepFinal("89000-000");
 		regiao.setCepInicial("80000-000");
 		regiao.setNome("nome de teste");
-		Assert.assertEquals(2, service.buscarSolicitacoesPorRegiao(regiao)
+		Assert.assertEquals(3, service.buscarSolicitacoesPorRegiao(regiao)
 				.size());
 	}
 

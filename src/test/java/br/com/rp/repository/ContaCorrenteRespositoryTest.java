@@ -39,94 +39,94 @@ public class ContaCorrenteRespositoryTest extends AbstractTest {
     private RegiaoRepository regiaoRepository;
 
     private static final BigDecimal _LIMITE_CONTA_VALIDO = new BigDecimal(300);
-	private static final StatusConta _STATUS_CONTA_VALIDO = StatusConta.APROVADA;
-	private static final TipoConta _TIPO_CONTA_VALIDO = TipoConta.CORRENTE;
-	
-	@Test
-	public void deveListarContaPorClienteId() {
-		Regiao regiao = new Regiao();
-		regiao.setNome(_NOME_VALIDO);
-		regiao.setCepFinal("86800-005");
-		regiao.setCepInicial("86800-005");
-		regiao = regiaoRepository.save(regiao);
+    private static final StatusConta _STATUS_CONTA_VALIDO = StatusConta.APROVADA;
+    private static final TipoConta _TIPO_CONTA_VALIDO = TipoConta.CORRENTE;
 
-		Cliente cliente = new Cliente();
-		cliente.setNome(_NOME_VALIDO);
-		cliente.setEmail(_EMAIL_VALIDO);
-		cliente.setCep(_CEP_VALIDO);
-		cliente.setDocumento(new GerarCPF().geraCPF());
-		cliente.setRegiao(regiao);
+    @Test
+    public void deveListarContaPorClienteId() {
+        Regiao regiao = new Regiao();
+        regiao.setNome(_NOME_VALIDO);
+        regiao.setCepFinal("86800-005");
+        regiao.setCepInicial("86800-005");
+        regiao = regiaoRepository.save(regiao);
 
-		clienteRepository.save(cliente);
+        Cliente cliente = new Cliente();
+        cliente.setNome(_NOME_VALIDO);
+        cliente.setEmail(_EMAIL_VALIDO);
+        cliente.setCep(_CEP_VALIDO);
+        cliente.setDocumento(new GerarCPF().geraCPF());
+        cliente.setRegiao(regiao);
 
-		ContaCorrente c = new ContaCorrente();
-		c.setLimite(_LIMITE_CONTA_VALIDO);
-		c.setStatusConta(_STATUS_CONTA_VALIDO);
-		c.setTipoConta(_TIPO_CONTA_VALIDO);
-		c.setCliente(cliente);
-		repository.save(c);
-		Assert.assertNotNull(c.getDigitoVerificador());
+        clienteRepository.save(cliente);
 
-		List<ContaCorrente> cc = repository.findByClienteId(c.getCliente().getId());
-		Assert.assertNotEquals(0, cc.size());
-	}
-	
-	@Test
-	public void deveListarContaPorDocumentoCliente() {
-		Regiao regiao = new Regiao();
-		regiao.setNome(_NOME_VALIDO);
-		regiao.setCepFinal("86800-005");
-		regiao.setCepInicial("86800-005");
-		regiao = regiaoRepository.save(regiao);
+        ContaCorrente c = new ContaCorrente();
+        c.setLimite(_LIMITE_CONTA_VALIDO);
+        c.setStatusConta(_STATUS_CONTA_VALIDO);
+        c.setTipoConta(_TIPO_CONTA_VALIDO);
+        c.setCliente(cliente);
+        repository.save(c);
+        Assert.assertNotNull(c.getDigitoVerificador());
 
-		Cliente cliente = new Cliente();
-		cliente.setNome(_NOME_VALIDO);
-		cliente.setEmail(_EMAIL_VALIDO);
-		cliente.setCep(_CEP_VALIDO);
-		cliente.setDocumento(new GerarCPF().geraCPF());
-		cliente.setRegiao(regiao);
+        List<ContaCorrente> cc = repository.findByClienteId(c.getCliente().getId());
+        Assert.assertNotEquals(0, cc.size());
+    }
 
-		clienteRepository.save(cliente);
+    @Test
+    public void deveListarContaPorDocumentoCliente() {
+        Regiao regiao = new Regiao();
+        regiao.setNome(_NOME_VALIDO);
+        regiao.setCepFinal("86800-005");
+        regiao.setCepInicial("86800-005");
+        regiao = regiaoRepository.save(regiao);
 
-		ContaCorrente c = new ContaCorrente();
-		c.setLimite(_LIMITE_CONTA_VALIDO);
-		c.setStatusConta(_STATUS_CONTA_VALIDO);
-		c.setTipoConta(_TIPO_CONTA_VALIDO);
-		c.setCliente(cliente);
-		repository.save(c);
-		Assert.assertNotNull(c.getDigitoVerificador());
+        Cliente cliente = new Cliente();
+        cliente.setNome(_NOME_VALIDO);
+        cliente.setEmail(_EMAIL_VALIDO);
+        cliente.setCep(_CEP_VALIDO);
+        cliente.setDocumento(new GerarCPF().geraCPF());
+        cliente.setRegiao(regiao);
 
-		List<ContaCorrente> cc = repository.findByClienteDocumento(c.getCliente().getDocumento());
-		Assert.assertNotEquals(0, cc.size());
-	}
-	
+        clienteRepository.save(cliente);
+
+        ContaCorrente c = new ContaCorrente();
+        c.setLimite(_LIMITE_CONTA_VALIDO);
+        c.setStatusConta(_STATUS_CONTA_VALIDO);
+        c.setTipoConta(_TIPO_CONTA_VALIDO);
+        c.setCliente(cliente);
+        repository.save(c);
+        Assert.assertNotNull(c.getDigitoVerificador());
+
+        List<ContaCorrente> cc = repository.findByClienteDocumento(c.getCliente().getDocumento());
+        Assert.assertNotEquals(0, cc.size());
+    }
+
     @Test
     public void deveListarContaPorNumeroPorDigitoVerificador() {
-		Regiao regiao = new Regiao();
-		regiao.setNome(_NOME_VALIDO);
-		regiao.setCepFinal("86800-005");
-		regiao.setCepInicial("86800-005");
-		regiao = regiaoRepository.save(regiao);
+        Regiao regiao = new Regiao();
+        regiao.setNome(_NOME_VALIDO);
+        regiao.setCepFinal("86800-005");
+        regiao.setCepInicial("86800-005");
+        regiao = regiaoRepository.save(regiao);
 
-		Cliente cliente = new Cliente();
-		cliente.setNome(_NOME_VALIDO);
-		cliente.setEmail(_EMAIL_VALIDO);
-		cliente.setCep(_CEP_VALIDO);
-		cliente.setDocumento(new GerarCPF().geraCPF());
-		cliente.setRegiao(regiao);
+        Cliente cliente = new Cliente();
+        cliente.setNome(_NOME_VALIDO);
+        cliente.setEmail(_EMAIL_VALIDO);
+        cliente.setCep(_CEP_VALIDO);
+        cliente.setDocumento(new GerarCPF().geraCPF());
+        cliente.setRegiao(regiao);
 
-		clienteRepository.save(cliente);
+        clienteRepository.save(cliente);
 
-		ContaCorrente c = new ContaCorrente();
-		c.setLimite(_LIMITE_CONTA_VALIDO);
-		c.setStatusConta(_STATUS_CONTA_VALIDO);
-		c.setTipoConta(_TIPO_CONTA_VALIDO);
-		c.setCliente(cliente);
-		repository.save(c);
-		Assert.assertNotNull(c.getDigitoVerificador());
+        ContaCorrente c = new ContaCorrente();
+        c.setLimite(_LIMITE_CONTA_VALIDO);
+        c.setStatusConta(_STATUS_CONTA_VALIDO);
+        c.setTipoConta(_TIPO_CONTA_VALIDO);
+        c.setCliente(cliente);
+        repository.save(c);
+        Assert.assertNotNull(c.getDigitoVerificador());
 
-		ContaCorrente cc = repository.findByContaByDigitoVerificador(c.getNumero(), c.getDigitoVerificador());
-		Assert.assertEquals(c.getId(), cc.getId());
+        ContaCorrente cc = repository.findByContaByDigitoVerificador(c.getNumero(), c.getDigitoVerificador());
+        Assert.assertEquals(c.getId(), cc.getId());
     }
 
     @Test(expected = EJBTransactionRolledbackException.class)
@@ -158,7 +158,7 @@ public class ContaCorrenteRespositoryTest extends AbstractTest {
         c = repository.save(c);
         Assert.assertNotNull(c.getDigitoVerificador());
     }
-    
+
     @Test(expected = EJBTransactionRolledbackException.class)
     public void deveNaoInserirPorFaltaDeCliente() {
         ContaCorrente c = new ContaCorrente();
@@ -169,11 +169,34 @@ public class ContaCorrenteRespositoryTest extends AbstractTest {
         Assert.assertNotNull(c.getDigitoVerificador());
     }
 
+    @Test(expected = AssertionError.class)
+    public void deveNaoInserirUmaContaPorSenhaMenorQueOitoDigitos() {
+        ContaCorrente c = new ContaCorrente();
+        c.setTipoConta(TipoConta.POUPANCA);
+        c.setLimite(BigDecimal.TEN);
+        c.setStatusConta(StatusConta.APROVADA);
+        c.setCliente(criarClienteCorreto());
+        c.setSenha("12345678");
+        repository.save(c);
+    }
+
+    @Test
+    public void deveInserirUmaConta() {
+        ContaCorrente c = new ContaCorrente();
+        c.setTipoConta(TipoConta.POUPANCA);
+        c.setLimite(BigDecimal.TEN);
+        c.setStatusConta(StatusConta.APROVADA);
+        c.setCliente(criarClienteCorreto());
+        c.setSenha("12345678");
+        c = repository.save(c);
+        Assert.assertNotNull(c.getId());
+    }
+
     private Cliente criarClienteCorreto() {
         Regiao regiao = new Regiao();
         regiao.setNome(_NOME_VALIDO);
         regiao.setCepFinal("86800-005");
-		regiao.setCepInicial("86800-005");
+        regiao.setCepInicial("86800-005");
         regiao = regiaoRepository.save(regiao);
 
         Cliente cliente = new Cliente();
