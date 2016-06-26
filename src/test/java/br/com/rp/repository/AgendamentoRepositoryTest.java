@@ -191,4 +191,13 @@ public class AgendamentoRepositoryTest extends AbstractTest {
 		List<Agendamento> lst = repository.findAgendamentosPendentesByDataFinal(cal.getTime());
 		Assert.assertNotEquals(0, lst.size());
 	}
+	
+	@Test
+	public void deveBuscarTodosAgendamentosRealizadosAteDataENaoEnviadosAoBacem() {
+		Calendar cal = Calendar.getInstance();
+		cal.add(2, Calendar.DAY_OF_MONTH);
+		repository.save(agendamento);
+		List<Agendamento> lst = repository.findAgendamentosRealizadosNaoEnviadosAoBacenByDataFinal(cal.getTime());
+		Assert.assertNotEquals(0, lst.size());
+	}
 }

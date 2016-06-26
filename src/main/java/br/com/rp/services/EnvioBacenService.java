@@ -1,0 +1,76 @@
+package br.com.rp.services;
+
+import java.util.Calendar;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.Singleton;
+import javax.inject.Inject;
+import javax.jms.Destination;
+import javax.jms.JMSConnectionFactory;
+import javax.jms.JMSContext;
+import javax.jms.JMSException;
+import javax.jms.JMSProducer;
+import javax.jms.ObjectMessage;
+
+import br.com.rp.domain.Agendamento;
+import br.com.rp.domain.Transacao;
+import br.com.rp.dto.TransferenciaBacenDTO;
+import br.com.rp.repository.AgendamentoRepository;
+import br.com.rp.repository.TransacaoRepository;
+
+@Singleton
+public class EnvioBacenService {
+
+	@Inject
+	@JMSConnectionFactory("java:jboss/DefaultJMSConnectionFactory")
+	private JMSContext context;
+
+	@Resource(name = "java:/jms/queue/TransferenciasQueue")
+	private Destination destinationTransferencias;
+
+	@Resource(name = "java:/jms/queue/PagamentosQueue")
+	private Destination destinationPagamentos;
+
+	@Resource(name = "java:/jms/queue/ChequesQueue")
+	private Destination destinationCheques;
+
+	@EJB
+	private AgendamentoRepository agendamentoRepository;
+
+	@EJB
+	private TransacaoRepository transacaoRepository;
+
+	public void envioInformacoes() {
+		List<Agendamento> lstAgendamentos = agendamentoRepository
+				.findAgendamentosRealizadosNaoEnviadosAoBacenByDataFinal(Calendar.getInstance().getTime());
+		lstAgendamentos.forEach(agendamento -> {
+			if (agendamento.getTransacao().getPagamento() == null
+					&& agendamento.getTransacao().getDepositoCheque() == null) {
+				enviarTransferencia(agendamento);
+			}
+		});
+	}
+
+	private void enviarTransferencia(Agendamento agendamento) {
+		try {
+			ObjectMessage obj = context.createObjectMessage();
+			obj.setObject(new TransferenciaBacenDTO(agendamento.getConta().getNumero(),
+													agendamento.getConta().getDigitoVerificador(), 
+													agendamento.getDataRealizacao(),
+													agendamento.getTransacao().getAgenciaDestino(),
+													agendamento.getTransacao().getAgenciaDestinoDigitoVerificador(),
+													agendamento.getTransacao().getNumeroContaDestino(),
+													agendamento.getTransacao().getNumeroContaDestinoDigitoVerificador(),
+													agendamento.getTransacao().getValor()));
+			JMSProducer produtor = context.createProducer();
+			produtor.send(destinationTransferencias, obj);
+			Transacao tr = transacaoRepository.findById(agendamento.getTransacao().getId());
+			tr.setEnvioBacen(Calendar.getInstance().getTime());
+			transacaoRepository.save(tr);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+}

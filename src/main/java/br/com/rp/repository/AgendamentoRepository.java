@@ -19,4 +19,6 @@ public interface AgendamentoRepository extends Repository<Agendamento> {
 	public List<Agendamento> findAgendamentosPendentesByDataFinal(Date dataFinal);
 	
 	public List<Agendamento> findAgendamentosPendentesByContaCorrenteIdByDataFinal(Long contaCorrenteId, Date dataFinal);
+	
+	public List<Agendamento> findAgendamentosRealizadosNaoEnviadosAoBacenByDataFinal(Date dataFinal);
 }
