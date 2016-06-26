@@ -57,5 +57,13 @@ public class AgendamentoRepositoryImpl extends AbstractRepositoryImpl<Agendament
 		qry.setParameter("dataFinal", dataFinal);
 		return qry.getResultList();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Agendamento> findAgendamentosPendentesByDataFinal(Date dataFinal) {
+		Query qry = em.createQuery("from Agendamento ag where ag.dataRealizacao <= :dataFinal and ag.estado = 'PENDENTE'", Agendamento.class);
+		qry.setParameter("dataFinal", dataFinal);
+		return qry.getResultList();
+	}
 	
 }

@@ -10,5 +10,5 @@ package br.com.rp.enums;
  * @author anderson
  */
 public enum EstadoAgendamento {
-	PENDENTE, REALIZADO, CANCELADO
+	PENDENTE, REALIZADO, CANCELADO, CANCELADO_SALDO_INSUFICIENTE
 }

@@ -1,6 +1,6 @@
 <dataset>
 	<agendamento id="1000" data_cadastro="2016-06-24 00:00:00" dataInclusao="2016-06-24 00:00:00" dataRealizacao="2016-06-24 01:00:01" estado="REALIZADO" conta="1000" transacao="1000"/>
 	<agendamento id="1001" data_cadastro="2016-06-24 01:00:00" dataInclusao="2016-06-24 01:00:00" dataRealizacao="2016-06-24 01:00:01" estado="REALIZADO" conta="1001" transacao="1001"/>
-	<agendamento id="1002" data_cadastro="2016-06-24 01:00:00" dataInclusao="2016-06-24 01:00:00" dataRealizacao="2016-07-24 01:00:01" estado="PENDENTE" conta="1001" transacao="1002"/>
+	<agendamento id="1002" data_cadastro="2016-06-24 01:00:00" dataInclusao="2016-06-24 01:00:00" dataRealizacao="2016-06-24 01:00:01" estado="PENDENTE" conta="1001" transacao="1002"/>
 	
 </dataset>
